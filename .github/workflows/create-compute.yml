@@ -44,18 +44,14 @@ jobs:
         if: ${{ inputs.cluster_tier == ''}}
         run: |
           az ml compute create --name ${{ inputs.cluster_name }} \
-                                  --type ComputeInstance \
-                                  --tier "dedicated" \
-                                  --size ${{ inputs.size }} \                          
+                                  --type ComputeInstance \                         
                                   --resource-group ${{ inputs.resource_group }} \
                                   --workspace-name ${{ inputs.workspace_name }}
       - name: create-compute-using-tier
         if: ${{ inputs.cluster_tier != ''}}
         run: |
           az ml compute create --name ${{ inputs.cluster_name }} \
-                                  --type ComputeInstance \
-                                  --tier ${{ inputs.cluster_tier }} \
-                                  --size ${{ inputs.size }} \                                  
+                                  --type ComputeInstance \                               
                                   --resource-group ${{ inputs.resource_group }} \
                                   --workspace-name ${{ inputs.workspace_name }}
 
